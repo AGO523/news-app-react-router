@@ -1,0 +1,15 @@
+workers_dev = true
+name = "my-worker"
+compatibility_date = "2025-03-11"
+compatibility_flags = ["nodejs_compat"]
+main = "./build/server/index.js"
+assets = { directory = "./build/client/" }
+
+[vars]
+VALUE_FROM_CLOUDFLARE = "Hello from Cloudflare"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "news-app-react-router"
+database_id = "06272e4c-ff19-49c4-b6c5-bdc5680135e3"
+migrations_dir = "drizzle"
