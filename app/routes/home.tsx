@@ -2,6 +2,7 @@ import * as schema from "~/database/schema";
 
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
+import { Outlet, Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -47,10 +48,21 @@ export async function loader({ context }: Route.LoaderArgs) {
 
 export default function Home({ actionData, loaderData }: Route.ComponentProps) {
   return (
-    <Welcome
-      guestBook={loaderData.guestBook}
-      guestBookError={actionData?.guestBookError}
-      message={loaderData.message}
-    />
+    <div className="p-6 space-y-4">
+      <Welcome
+        guestBook={loaderData.guestBook}
+        guestBookError={actionData?.guestBookError}
+        message={loaderData.message}
+      />
+
+      <Link
+        to="news"
+        className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+      >
+        ニュース作成
+      </Link>
+
+      <Outlet />
+    </div>
   );
 }
