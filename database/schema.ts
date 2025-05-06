@@ -12,7 +12,9 @@ export const news = sqliteTable("news", {
   email: text().notNull(),
   topic: text().notNull(),
   optionalText: text(),
+  // pending, inProgress, completed
   progressStatus: text().notNull().default("pending"),
+  // subscribed, unsubscribed
   subscriptionStatus: text().notNull().default("subscribed"),
   createdAt: integer().notNull(),
 });
