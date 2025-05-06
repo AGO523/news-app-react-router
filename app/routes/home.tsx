@@ -59,7 +59,7 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
         to="news"
         className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
       >
-        ニュース作成
+        購読するニュースを登録
       </Link>
 
       <Outlet />
