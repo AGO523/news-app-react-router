@@ -8,13 +8,19 @@ export async function action({ request, context }: Route.ActionArgs) {
   const result = await createNews(context.db, formData);
 
   if (!result) {
+    console.error("createNews failed");
     return { error: "作成に失敗しました。再度お試しください。" };
   }
 
-  const env = process.env;
+  const env = context.cloudflare.env;
   const apiKey = env.API_GATEWAY_KEY;
   const gatewayUrl = env.API_GATEWAY_URL;
+
+  console.log("API Gateway Key:", apiKey);
+  console.log("API Gateway URL:", gatewayUrl);
+
   if (!apiKey || !gatewayUrl) {
+    console.error("Missing API key or URL");
     return { error: "作成に失敗しました。再度お試しください。" };
   }
 
@@ -25,16 +31,18 @@ export async function action({ request, context }: Route.ActionArgs) {
     createdAt: Date.now(),
   };
 
+  const encoded = Buffer.from(JSON.stringify(message)).toString("base64");
+
   const payload = {
     messages: [
       {
-        data: btoa(JSON.stringify(message)),
+        data: encoded,
       },
     ],
   };
 
   try {
-    await fetch(gatewayUrl, {
+    const response = await fetch(gatewayUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,8 +50,15 @@ export async function action({ request, context }: Route.ActionArgs) {
       },
       body: JSON.stringify(payload),
     });
+
+    const resText = await response.text();
+    console.log("Gateway Response:", response.status, resText);
+
+    if (!response.ok) {
+      throw new Error(`Publish failed: ${response.status}`);
+    }
   } catch (err) {
-    console.error(err);
+    console.error("Publish error:", err);
     return { error: "通知送信に失敗しました。" };
   }
 
