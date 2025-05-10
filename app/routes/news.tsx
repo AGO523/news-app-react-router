@@ -16,11 +16,7 @@ export async function action({ request, context }: Route.ActionArgs) {
   const apiKey = env.API_GATEWAY_KEY;
   const gatewayUrl = env.API_GATEWAY_URL;
 
-  console.log("API Gateway Key:", apiKey);
-  console.log("API Gateway URL:", gatewayUrl);
-
   if (!apiKey || !gatewayUrl) {
-    console.error("Missing API key or URL");
     return { error: "作成に失敗しました。再度お試しください。" };
   }
 
