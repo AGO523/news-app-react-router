@@ -13,3 +13,6 @@ binding = "DB"
 database_name = "news-app-react-router"
 database_id = "06272e4c-ff19-49c4-b6c5-bdc5680135e3"
 migrations_dir = "drizzle"
+
+[observability.logs]
+enabled = true
