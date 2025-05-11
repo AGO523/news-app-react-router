@@ -12,6 +12,8 @@ export async function action({ request, context }: Route.ActionArgs) {
     return { error: "作成に失敗しました。再度お試しください。" };
   }
 
+  console.log("Created news:", result);
+
   const env = context.cloudflare.env;
   const apiKey = env.API_GATEWAY_KEY;
   const gatewayUrl = env.API_GATEWAY_URL;
