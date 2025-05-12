@@ -40,7 +40,7 @@ export async function action({ request, context }: Route.ActionArgs) {
   };
 
   try {
-    const response = await fetch(gatewayUrl, {
+    const response = await fetch(`${gatewayUrl}/publish`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
