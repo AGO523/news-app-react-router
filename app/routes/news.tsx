@@ -43,7 +43,6 @@ export async function action({ request, context }: Route.ActionArgs) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // "x-api-key": apiKey,
       },
       body: JSON.stringify(payload),
     });
