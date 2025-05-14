@@ -15,10 +15,9 @@ export async function action({ request, context }: Route.ActionArgs) {
   console.log("Created news:", result);
 
   const env = context.cloudflare.env;
-  const apiKey = env.API_GATEWAY_KEY;
   const gatewayUrl = env.API_GATEWAY_URL;
 
-  if (!apiKey || !gatewayUrl) {
+  if (!gatewayUrl) {
     return { error: "作成に失敗しました。再度お試しください。" };
   }
 
@@ -44,7 +43,7 @@ export async function action({ request, context }: Route.ActionArgs) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
+        // "x-api-key": apiKey,
       },
       body: JSON.stringify(payload),
     });
