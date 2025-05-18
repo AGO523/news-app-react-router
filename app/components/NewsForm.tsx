@@ -1,9 +1,21 @@
 import { Form, useNavigation } from "react-router";
+import { useState } from "react";
 
 export default function NewsForm() {
   const navigation = useNavigation();
-
   const isSubmitting = navigation.state === "submitting";
+
+  const [topic, setTopic] = useState("");
+  const [optionalText, setOptionalText] = useState("");
+
+  const promptTemplate = `あなたは優秀なリサーチャーです。
+私は「\${topic}」について、最新の情報をキャッチアップしたいと考えています。
+現在の日時を取得して、「\${topic}」について、信頼性の高いニュースソースを3件検索して要約してください。
+それぞれのニュースについて簡潔な要約と参照URLを必ず記載してください。
+${optionalText ? `補足: ${optionalText}` : ""}`.trim();
+
+  // 展開済みの最終プロンプトを送信 & 表示に使用
+  const prompt = promptTemplate.replace(/\$\{topic\}/g, topic || "トピック名");
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
@@ -22,11 +34,7 @@ export default function NewsForm() {
         }`}
       >
         <input type="hidden" name="repositoryName" value="newsAppReactRouter" />
-        <input
-          type="hidden"
-          name="prompt"
-          value={`あなたは優秀なリサーチャーです。私は「\${topic}」について、最新の情報をキャッチアップしたいと考えています。現在の日時を取得して、「\${topic}」について、信頼性の高いニュースソースを3件検索して要約してください。それぞれのニュースについて簡潔な要約と参照URLを必ず記載してください。`}
-        />
+        <input type="hidden" name="prompt" value={prompt} />
 
         <div className="space-y-6">
           <div>
@@ -57,6 +65,8 @@ export default function NewsForm() {
               name="topic"
               type="text"
               required
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
               className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition text-gray-700"
             />
           </div>
@@ -72,9 +82,22 @@ export default function NewsForm() {
               id="optionalText"
               name="optionalText"
               rows={4}
+              value={optionalText}
+              onChange={(e) => setOptionalText(e.target.value)}
               className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition text-gray-700"
             />
           </div>
+        </div>
+
+        {/* 展開済みプロンプトのプレビュー */}
+        <label
+          htmlFor="optionalText"
+          className="block text-sm font-semibold text-gray-800 mb-1"
+        >
+          送信するプロンプト
+        </label>
+        <div className="mt-2 p-4 border border-gray-200 rounded bg-gray-50 text-sm text-gray-800 whitespace-pre-wrap">
+          {prompt}
         </div>
 
         <button
