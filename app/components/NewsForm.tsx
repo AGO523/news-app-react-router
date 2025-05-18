@@ -21,6 +21,13 @@ export default function NewsForm() {
           isSubmitting ? "opacity-50 pointer-events-none" : ""
         }`}
       >
+        <input type="hidden" name="repositoryName" value="newsAppReactRouter" />
+        <input
+          type="hidden"
+          name="prompt"
+          value={`あなたは優秀なリサーチャーです。私は「\${topic}」について、最新の情報をキャッチアップしたいと考えています。現在の日時を取得して、「\${topic}」について、信頼性の高いニュースソースを3件検索して要約してください。それぞれのニュースについて簡潔な要約と参照URLを必ず記載してください。`}
+        />
+
         <div className="space-y-6">
           <div>
             <label
@@ -50,7 +57,7 @@ export default function NewsForm() {
               name="topic"
               type="text"
               required
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition"
+              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition text-gray-700"
             />
           </div>
 
