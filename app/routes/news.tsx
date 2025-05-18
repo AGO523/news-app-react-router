@@ -8,11 +8,8 @@ export async function action({ request, context }: Route.ActionArgs) {
   const result = await createNews(context.db, formData);
 
   if (!result) {
-    console.error("createNews failed");
     return { error: "作成に失敗しました。再度お試しください。" };
   }
-
-  console.log("Created news:", result);
 
   const env = context.cloudflare.env;
   const gatewayUrl = env.API_GATEWAY_URL;
@@ -25,6 +22,8 @@ export async function action({ request, context }: Route.ActionArgs) {
     id: result.id,
     topic: formData.get("topic"),
     optionalText: formData.get("optionalText"),
+    repositoryName: formData.get("repositoryName"),
+    prompt: formData.get("prompt"),
     createdAt: Date.now(),
   };
 
