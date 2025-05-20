@@ -20,6 +20,8 @@ export async function action({ request, context }: Route.ActionArgs) {
 
   const message = {
     id: result.id,
+    uuid: crypto.randomUUID(),
+    email: formData.get("email"),
     topic: formData.get("topic"),
     optionalText: formData.get("optionalText"),
     repositoryName: formData.get("repositoryName"),
