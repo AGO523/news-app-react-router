@@ -18,6 +18,12 @@ export async function action({ request, context }: Route.ActionArgs) {
     return { error: "作成に失敗しました。再度お試しください。" };
   }
 
+  const prompt = formData.get("prompt") as string;
+  const formatedPrompt = prompt.replace(
+    "あなたは優秀なリサーチャーです。",
+    "あなたは優秀なリサーチャーです。結果には要約文とニュースソースだけを記載してください。また、メールで文章を表示することを前提として、読みやすい結果にしてください。"
+  );
+
   const message = {
     id: result.id,
     uuid: crypto.randomUUID(),
@@ -25,7 +31,7 @@ export async function action({ request, context }: Route.ActionArgs) {
     topic: formData.get("topic"),
     optionalText: formData.get("optionalText"),
     repositoryName: formData.get("repositoryName"),
-    prompt: formData.get("prompt"),
+    prompt: formatedPrompt,
     createdAt: Date.now(),
   };
 
@@ -52,6 +58,7 @@ export async function action({ request, context }: Route.ActionArgs) {
     console.log("Gateway Response:", response.status, resText);
 
     if (!response.ok) {
+      console.log("failed:", response);
       throw new Error(`Publish failed: ${response.status}`);
     }
   } catch (err) {
