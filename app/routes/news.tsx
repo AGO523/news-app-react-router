@@ -21,8 +21,10 @@ export async function action({ request, context }: Route.ActionArgs) {
   const prompt = formData.get("prompt") as string;
   const formatedPrompt = prompt.replace(
     "あなたは優秀なリサーチャーです。",
-    "あなたは優秀なリサーチャーです。結果には要約文とニュースソースだけを記載してください。また、メールで文章を表示することを前提として、読みやすい結果にしてください。"
+    "あなたは優秀なリサーチャーです。次の①と②のルールを絶対に遵守してください。①結果には要約文とニュースソースだけを記載してください。②メールで文章を表示することを前提として、読みやすい結果にしてください。"
   );
+
+  console.log("Formatted Prompt:", formatedPrompt);
 
   const message = {
     id: result.id,
