@@ -52,6 +52,7 @@ export async function action({ request, context }: Route.ActionArgs) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-api-key": env.API_GATEWAY_KEY || "",
       },
       body: JSON.stringify(payload),
     });
