@@ -25,15 +25,15 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="min-h-screen bg-gradient-to-b from-cyan-600 to-blue-900 text-gray-300">
+        <div className="p-8 space-y-6">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </body>

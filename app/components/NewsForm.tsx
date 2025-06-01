@@ -17,7 +17,7 @@ ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
   const prompt = promptTemplate.replace(/\$\{topic\}/g, topic || "トピック名");
 
   return (
-    <div className="text-white">
+    <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-6 text-center">
       <h1 className="text-3xl font-bold text-center mb-6">ニュース作成</h1>
 
       {isSubmitting && (
