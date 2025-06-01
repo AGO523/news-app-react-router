@@ -14,33 +14,32 @@ export default function NewsForm() {
 それぞれのニュースについて簡潔な要約と参照URLを必ず記載してください。
 ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
 
-  // 展開済みの最終プロンプトを送信 & 表示に使用
   const prompt = promptTemplate.replace(/\$\{topic\}/g, topic || "トピック名");
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
-      <h1 className="text-2xl font-bold mb-4">ニュース作成</h1>
+    <div className="text-white">
+      <h1 className="text-3xl font-bold text-center mb-6">ニュース作成</h1>
 
       {isSubmitting && (
-        <div className="text-center text-sm text-gray-600 mb-4">
+        <div className="text-center text-sm text-teal-100 mb-4">
           フォームを送信しています...
         </div>
       )}
 
       <Form
         method="post"
-        className={`space-y-4 ${
+        className={`space-y-6 ${
           isSubmitting ? "opacity-50 pointer-events-none" : ""
         }`}
       >
         <input type="hidden" name="repositoryName" value="newsAppReactRouter" />
         <input type="hidden" name="prompt" value={prompt} />
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-gray-800 mb-1"
+              className="block text-sm font-semibold text-white mb-1"
             >
               メールアドレス
             </label>
@@ -49,14 +48,14 @@ ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
               name="email"
               type="email"
               required
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition text-gray-700"
+              className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-md placeholder:text-white/60 focus:ring-2 focus:ring-teal-400 focus:outline-none text-white"
             />
           </div>
 
           <div>
             <label
               htmlFor="topic"
-              className="block text-sm font-semibold text-gray-800 mb-1"
+              className="block text-sm font-semibold text-white mb-1"
             >
               トピック
             </label>
@@ -67,14 +66,14 @@ ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
               required
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition text-gray-700"
+              className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-md placeholder:text-white/60 focus:ring-2 focus:ring-teal-400 focus:outline-none text-white"
             />
           </div>
 
           <div>
             <label
               htmlFor="optionalText"
-              className="block text-sm font-semibold text-gray-800 mb-1"
+              className="block text-sm font-semibold text-white mb-1"
             >
               補足テキスト
             </label>
@@ -84,25 +83,23 @@ ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
               rows={4}
               value={optionalText}
               onChange={(e) => setOptionalText(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition text-gray-700"
+              className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-md placeholder:text-white/60 focus:ring-2 focus:ring-teal-400 focus:outline-none text-white"
             />
           </div>
         </div>
 
-        {/* 展開済みプロンプトのプレビュー */}
-        <label
-          htmlFor="optionalText"
-          className="block text-sm font-semibold text-gray-800 mb-1"
-        >
-          送信するプロンプト
-        </label>
-        <div className="mt-2 p-4 border border-gray-200 rounded bg-gray-50 text-sm text-gray-800 whitespace-pre-wrap">
-          {prompt}
+        <div>
+          <label className="block text-sm font-semibold text-white mb-1">
+            送信するプロンプト
+          </label>
+          <div className="mt-2 p-4 border border-white/20 rounded-xl bg-white/10 backdrop-blur-md text-sm text-white whitespace-pre-wrap">
+            {prompt}
+          </div>
         </div>
 
         <button
           type="submit"
-          className={`w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 ${
+          className={`w-sm bg-teal-500 hover:bg-teal-600 text-white py-2 px-4 rounded-xl shadow transition ${
             isSubmitting ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={isSubmitting}
