@@ -49,7 +49,7 @@ ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
               name="email"
               type="email"
               required
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition"
+              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition text-gray-700"
             />
           </div>
 
