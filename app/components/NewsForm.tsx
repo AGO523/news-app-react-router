@@ -17,7 +17,7 @@ ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
   const prompt = promptTemplate.replace(/\$\{topic\}/g, topic || "トピック名");
 
   return (
-    <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-6 text-center">
+    <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-6">
       <h1 className="text-3xl font-bold text-center mb-6">ニュース作成</h1>
 
       {isSubmitting && (
@@ -97,29 +97,42 @@ ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
           </div>
         </div>
 
-        <button
-          type="submit"
-          className={`w-sm bg-teal-500 hover:bg-teal-600 text-white py-2 px-4 rounded-xl shadow transition ${
-            isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-          disabled={isSubmitting}
-        >
-          <span className="flex items-center justify-center">
-            {isSubmitting && (
-              <svg
-                className="animate-spin h-5 w-5 mr-3 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8A8.009 8.009 0 0 1 12 20z"
-                />
-              </svg>
-            )}
-            {isSubmitting ? <span>登録中...</span> : <span>登録</span>}
-          </span>
-        </button>
+        <div className="text-sm text-gray-400 mt-4">
+          <p>
+            注意: 入力内容に基づいてAIが自動的に生成します。
+            <br />
+            送信するプロンプトによっては、異なる内容が生成される可能性があります。
+          </p>
+          <p>
+            信頼性はAIの判断に基づいていますが、必ずしも正確な情報を保証するものではありません。
+          </p>
+        </div>
+
+        <div className="flex justify-center mt-6">
+          <button
+            type="submit"
+            className={`min-w-[160px] bg-teal-500 hover:bg-teal-600 text-white py-2 px-6 rounded-xl shadow transition ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={isSubmitting}
+          >
+            <span className="flex items-center justify-center">
+              {isSubmitting && (
+                <svg
+                  className="animate-spin h-5 w-5 mr-2 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8A8.009 8.009 0 0 1 12 20z"
+                  />
+                </svg>
+              )}
+              {isSubmitting ? <span>登録中...</span> : <span>登録</span>}
+            </span>
+          </button>
+        </div>
       </Form>
     </div>
   );
