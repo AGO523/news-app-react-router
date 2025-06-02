@@ -8,13 +8,12 @@ export default function NewsForm() {
   const [topic, setTopic] = useState("");
   const [optionalText, setOptionalText] = useState("");
 
-  const promptTemplate = `あなたは優秀なリサーチャーです。
-私は「\${topic}」について、最新の情報をキャッチアップしたいと考えています。
-現在の日時を取得して、「\${topic}」について、信頼性の高いニュースソースを3件検索して要約してください。
-それぞれのニュースについて簡潔な要約と参照URLを必ず記載してください。
+  const promptTemplate = `あなたは優秀なリサーチャーであり、指導者です。
+私は毎日、「\${topic}」について、学習をしたいと考えています。
+「\${topic}」について、信頼性の高い情報を調査して、内容を要約してください。
 ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
 
-  const prompt = promptTemplate.replace(/\$\{topic\}/g, topic || "トピック名");
+  const prompt = promptTemplate.replace(/\$\{topic\}/g, topic || "トピック");
 
   return (
     <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-6">
