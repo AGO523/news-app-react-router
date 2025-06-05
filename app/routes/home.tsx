@@ -13,9 +13,16 @@ export function meta({}: Route.MetaArgs) {
 export default function Home({}: Route.ComponentProps) {
   return (
     <div className="max-w-3xl mx-auto bg-white/0 backdrop-blur-md rounded-2xl shadow-sm p-8">
-      <h1 className="text-lg font-bold text-center mb-6">
-        ニュース要約配信サービス
-      </h1>
+      <div className="text-center">
+        <img
+          src="/images/iwashi_kan.png"
+          alt="サービスロゴ"
+          className="mx-auto w-16 h-auto"
+        />
+        <h1 className="text-lg font-bold text-center my-4">
+          ニュース要約配信サービス
+        </h1>
+      </div>
 
       <p className="mb-4 leading-relaxed">
         本サービスは、あなたの興味のあるトピックに関する最新ニュースを自動で要約し、
