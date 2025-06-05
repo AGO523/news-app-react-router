@@ -14,17 +14,11 @@ export default function NewsForm() {
 ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
 
   const prompt = promptTemplate.replace(/\$\{topic\}/g, topic || "トピック");
+  const addedPrompt = `${prompt}\n\n結果には要約文と情報のソースを記載してください。\nメールで文章を表示することを前提として、シンプルで読みやすい結果にしてください。`;
 
   return (
     <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-6">
       <h1 className="text-3xl font-bold text-center mb-6">ニュース作成</h1>
-
-      {isSubmitting && (
-        <div className="text-center text-sm text-teal-100 mb-4">
-          フォームを送信しています...
-        </div>
-      )}
-
       <Form
         method="post"
         className={`space-y-6 ${
@@ -106,6 +100,12 @@ ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
             信頼性はAIの判断に基づいていますが、必ずしも正確な情報を保証するものではありません。
           </p>
         </div>
+
+        {isSubmitting && (
+          <div className="text-center text-sm text-teal-100 mb-4">
+            フォームを送信しています...
+          </div>
+        )}
 
         <div className="flex justify-center mt-6">
           <button
