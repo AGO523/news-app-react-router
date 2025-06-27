@@ -14,7 +14,6 @@ export default function NewsForm() {
 ${optionalText ? `補足: ${optionalText}` : ""}`.trim();
 
   const prompt = promptTemplate.replace(/\$\{topic\}/g, topic || "トピック");
-  const addedPrompt = `${prompt}\n\n結果には要約文と情報のソースを記載してください。\nメールで文章を表示することを前提として、シンプルで読みやすい結果にしてください。`;
 
   return (
     <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-6">
