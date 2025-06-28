@@ -17,7 +17,12 @@ export default function Header() {
         >
           トピック登録
         </Link>
-        {/* 追加ナビゲーションがあればここに */}
+        <Link
+          to="/typescript-learning"
+          className="text-white text-sm hover:underline hover:text-teal-200"
+        >
+          TypeScript学習
+        </Link>
       </nav>
     </header>
   );
