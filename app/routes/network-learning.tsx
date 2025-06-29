@@ -7,11 +7,11 @@ import {
 
 export function meta() {
   return [
-    { title: "ネットワーク学習 - インフラ基礎から応用まで" },
+    { title: "ネットワーク学習 - インフラ基礎からWeb開発実践まで" },
     {
       name: "description",
       content:
-        "ネットワークの基礎から応用まで包括的に学習。OSI参照モデル、TCP/UDP、DNS、HTTP/HTTPS、VPN、ファイアウォール、VLAN、ロードバランシングなど11のレッスンでネットワークスキルを習得。",
+        "ネットワークの基礎からWeb開発実践まで包括的に学習。OSI参照モデル、TCP/UDP、DNS、HTTP/HTTPS、CORS、WebSocket、ロードバランシングなど16のレッスンで実践的なネットワークスキルを習得。",
     },
   ];
 }
@@ -137,6 +137,22 @@ export default function NetworkLearning() {
             />
           </svg>
         );
+      case "webdev":
+        return (
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+            />
+          </svg>
+        );
       default:
         return (
           <svg
@@ -161,7 +177,7 @@ export default function NetworkLearning() {
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">ネットワーク学習</h1>
         <p className="text-gray-400">
-          基礎から応用まで、11のレッスンでネットワーク技術を体系的に習得しましょう。
+          基礎からWeb開発実践まで、16のレッスンでネットワーク技術を体系的に習得しましょう。
           理論、実例、クイズ、実習を通じて実践的なスキルを身につけます。
         </p>
       </div>
@@ -195,6 +211,12 @@ export default function NetworkLearning() {
                 key: "advanced",
                 label: "応用",
                 count: networkLessons.filter((l) => l.category === "advanced")
+                  .length,
+              },
+              {
+                key: "webdev",
+                label: "Web開発",
+                count: networkLessons.filter((l) => l.category === "webdev")
                   .length,
               },
             ].map(({ key, label, count }) => (
@@ -237,6 +259,8 @@ export default function NetworkLearning() {
                         ? "セキュリティ"
                         : lesson.category === "advanced"
                         ? "応用"
+                        : lesson.category === "webdev"
+                        ? "Web開発"
                         : lesson.category}
                     </span>
                   </div>

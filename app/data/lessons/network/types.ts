@@ -2,7 +2,7 @@ export interface NetworkLessonContent {
   id: string;
   title: string;
   description: string;
-  category: "basic" | "protocol" | "security" | "advanced";
+  category: "basic" | "protocol" | "security" | "advanced" | "webdev";
   difficulty: 1 | 2 | 3 | 4 | 5;
   content: {
     theory: string;

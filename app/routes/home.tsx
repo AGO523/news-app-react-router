@@ -152,9 +152,9 @@ export default function Home({}: Route.ComponentProps) {
             <h3 className="text-lg font-semibold mb-2">ネットワーク学習</h3>
           </div>
           <ul className="text-sm space-y-1 mb-4 text-gray-300">
-            <li>• OSI参照モデル・TCP/UDP基礎</li>
-            <li>• DNS・HTTP/HTTPS・VPN</li>
-            <li>• ファイアウォール・VLAN・LB</li>
+            <li>• OSI基礎からWeb開発実践まで</li>
+            <li>• HTTP・CORS・WebSocket実践</li>
+            <li>• 全16レッスン + 実習・クイズ</li>
           </ul>
           <Link
             to="network-learning"
