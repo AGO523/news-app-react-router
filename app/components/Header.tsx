@@ -23,6 +23,12 @@ export default function Header() {
         >
           TypeScript学習
         </Link>
+        <Link
+          to="/ruby-algorithm-learning"
+          className="text-white text-sm hover:underline hover:text-teal-200"
+        >
+          Ruby競技プログラミング
+        </Link>
       </nav>
     </header>
   );

@@ -4,4 +4,5 @@ export default [
   index("routes/home.tsx"),
   route("news", "routes/news.tsx"),
   route("typescript-learning", "routes/typescript-learning.tsx"),
+  route("ruby-algorithm-learning", "routes/ruby-algorithm-learning.tsx"),
 ] satisfies RouteConfig;

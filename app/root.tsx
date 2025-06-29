@@ -35,7 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="min-h-screen bg-gradient-to-b from-cyan-600 to-blue-900 text-gray-300">
         <Header />
-        <div className="p-8 space-y-6">{children}</div>
+        <div className="md:p-8 space-y-6">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </body>
