@@ -94,6 +94,26 @@ export default function Header() {
           <span className="hidden lg:inline">ネットワーク</span>
           <span className="lg:hidden">NET</span>
         </Link>
+        <Link
+          to="/react-router-guide"
+          className="text-white text-sm hover:text-teal-200 transition flex items-center space-x-1"
+        >
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span className="hidden lg:inline">React Router</span>
+          <span className="lg:hidden">RR</span>
+        </Link>
       </nav>
     </header>
   );

@@ -29,7 +29,7 @@ export default function Home({}: Route.ComponentProps) {
       </div>
 
       {/* サービス一覧 */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {/* ニュース要約配信 */}
         <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/20">
           <div className="text-center mb-4">
@@ -161,6 +161,39 @@ export default function Home({}: Route.ComponentProps) {
             className="block text-center bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg transition text-sm"
           >
             基礎から学ぶ
+          </Link>
+        </div>
+
+        {/* React Router解説 */}
+        <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+          <div className="text-center mb-4">
+            <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">React Router解説</h3>
+          </div>
+          <ul className="text-sm space-y-1 mb-4 text-gray-300">
+            <li>• Loader・Action仕組み解説</li>
+            <li>• このアプリの内部構造</li>
+            <li>• 視覚的なデータフロー図</li>
+          </ul>
+          <Link
+            to="react-router-guide"
+            className="block text-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition text-sm"
+          >
+            仕組みを学ぶ
           </Link>
         </div>
       </div>
