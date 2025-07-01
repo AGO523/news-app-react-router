@@ -25,34 +25,36 @@ export default function ReactRouterGuide({}: Route.ComponentProps) {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-4">React Router v7 解説</h1>
-        <p className="text-gray-400 text-lg">
+    <div className="max-w-6xl mx-auto p-4 md:p-6">
+      <div className="mb-6 md:mb-8">
+        <h1 className="text-2xl md:text-3xl font-bold mb-4">
+          React Router v7 解説
+        </h1>
+        <p className="text-gray-400 text-base md:text-lg">
           このアプリケーションがどのように動作しているかを理解しよう
         </p>
       </div>
 
       {/* タブナビゲーション */}
-      <div className="flex space-x-2 mb-8 border-b border-white/20">
+      <div className="flex flex-wrap gap-2 mb-6 md:mb-8 border-b border-white/20 pb-2">
         {tabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`px-6 py-3 text-sm font-medium transition-colors ${
+            className={`px-3 py-2 md:px-6 md:py-3 text-xs md:text-sm font-medium transition-colors whitespace-nowrap ${
               activeTab === tab.key
                 ? "text-green-400 border-b-2 border-green-400"
                 : "text-gray-400 hover:text-white"
             }`}
           >
-            <span className="mr-2">{tab.icon}</span>
+            <span className="mr-1 md:mr-2">{tab.icon}</span>
             {tab.label}
           </button>
         ))}
       </div>
 
       {/* タブコンテンツ */}
-      <div className="bg-white/10 rounded-xl p-8">
+      <div className="bg-white/10 rounded-xl p-4 md:p-8">
         {activeTab === "overview" && <OverviewSection />}
         {activeTab === "loader" && <LoaderSection />}
         {activeTab === "action" && <ActionSection />}
@@ -125,18 +127,26 @@ function OverviewSection() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg p-6 border border-white/20">
-        <h3 className="text-xl font-semibold mb-4">データフローの循環図</h3>
-        <img src="/images/lorder-action.png" alt="ロゴ" className="" />
+      <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg p-4 md:p-6 border border-white/20">
+        <h3 className="text-lg md:text-xl font-semibold mb-4">
+          データフローの循環図
+        </h3>
+        <div className="flex justify-center mb-4">
+          <img
+            src="/images/lorder-action.png"
+            alt="Loader・Action・Componentの循環図"
+            className="w-full max-w-2xl h-auto rounded-lg"
+          />
+        </div>
 
         {/* 説明テキスト */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-          <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg p-4 border border-yellow-500/30">
+        <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-sm">
+          <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg p-3 md:p-4 border border-yellow-500/30">
             <div className="flex items-center mb-2">
-              <span className="text-xl mr-2">⬇️</span>
+              <span className="text-lg md:text-xl mr-2">⬇️</span>
               <span className="font-semibold text-yellow-400">Loaders</span>
             </div>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-xs md:text-sm">
               ページ表示前にサーバーサイドでデータを取得し、コンポーネントに渡す
             </p>
           </div>
