@@ -369,22 +369,24 @@ export default function News() {
 
 function StructureSection() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       <div>
-        <h2 className="text-2xl font-bold mb-4 text-purple-400">
+        <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-purple-400">
           このアプリの構造
         </h2>
-        <p className="text-gray-300 leading-relaxed mb-6">
+        <p className="text-gray-300 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
           実際のファイル構成とデータフローを理解して、React
           Routerアプリケーションの設計パターンを学びましょう。
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white/10 rounded-lg p-6 border border-white/20">
-          <h3 className="text-xl font-semibold mb-4">ファイル構成</h3>
-          <div className="bg-black/30 rounded p-4 overflow-x-auto">
-            <pre className="text-sm font-mono">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
+          <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
+            ファイル構成
+          </h3>
+          <div className="bg-black/30 rounded p-3 md:p-4 overflow-x-auto">
+            <pre className="text-xs md:text-sm font-mono">
               <code className="text-green-400">{`app/
 ├── routes.ts          # ルート定義
 ├── root.tsx           # レイアウト
@@ -402,10 +404,12 @@ function StructureSection() {
           </div>
         </div>
 
-        <div className="bg-white/10 rounded-lg p-6 border border-white/20">
-          <h3 className="text-xl font-semibold mb-4">ルート定義</h3>
-          <div className="bg-black/30 rounded p-4 overflow-x-auto">
-            <pre className="text-sm">
+        <div className="bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
+          <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
+            ルート定義
+          </h3>
+          <div className="bg-black/30 rounded p-3 md:p-4 overflow-x-auto">
+            <pre className="text-xs md:text-sm">
               <code className="text-gray-300">{`// routes.ts
 export default [
   index("routes/home.tsx"),
@@ -422,10 +426,12 @@ export default [
         </div>
       </div>
 
-      <div className="bg-white/10 rounded-lg p-6 border border-white/20">
-        <h3 className="text-xl font-semibold mb-4">データフロー図</h3>
-        <div className="bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-lg p-6">
-          <div className="font-mono text-sm overflow-x-auto">
+      <div className="bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
+        <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
+          データフロー図
+        </h3>
+        <div className="bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-lg p-4 md:p-6">
+          <div className="font-mono text-xs md:text-sm overflow-x-auto">
             <pre className="text-center">
               <code className="text-purple-400">{`
                      ユーザーリクエスト
@@ -454,10 +460,14 @@ export default [
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4">
-        <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-500/50">
-          <h4 className="font-semibold mb-2 text-blue-400">学習ページ</h4>
-          <p className="text-sm text-gray-300 mb-2">静的コンテンツ中心</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+        <div className="bg-blue-500/20 rounded-lg p-3 md:p-4 border border-blue-500/50">
+          <h4 className="font-semibold mb-2 text-blue-400 text-sm md:text-base">
+            学習ページ
+          </h4>
+          <p className="text-xs md:text-sm text-gray-300 mb-2">
+            静的コンテンツ中心
+          </p>
           <ul className="text-xs space-y-1 text-gray-400">
             <li>• Loaderでレッスンデータ取得</li>
             <li>• インタラクティブなUI</li>
@@ -465,9 +475,13 @@ export default [
           </ul>
         </div>
 
-        <div className="bg-orange-500/20 rounded-lg p-4 border border-orange-500/50">
-          <h4 className="font-semibold mb-2 text-orange-400">ニュースページ</h4>
-          <p className="text-sm text-gray-300 mb-2">動的データ処理</p>
+        <div className="bg-orange-500/20 rounded-lg p-3 md:p-4 border border-orange-500/50">
+          <h4 className="font-semibold mb-2 text-orange-400 text-sm md:text-base">
+            ニュースページ
+          </h4>
+          <p className="text-xs md:text-sm text-gray-300 mb-2">
+            動的データ処理
+          </p>
           <ul className="text-xs space-y-1 text-gray-400">
             <li>• Actionでフォーム処理</li>
             <li>• データベース連携</li>
@@ -475,9 +489,13 @@ export default [
           </ul>
         </div>
 
-        <div className="bg-green-500/20 rounded-lg p-4 border border-green-500/50">
-          <h4 className="font-semibold mb-2 text-green-400">ホームページ</h4>
-          <p className="text-sm text-gray-300 mb-2">ナビゲーション中心</p>
+        <div className="bg-green-500/20 rounded-lg p-3 md:p-4 border border-green-500/50">
+          <h4 className="font-semibold mb-2 text-green-400 text-sm md:text-base">
+            ホームページ
+          </h4>
+          <p className="text-xs md:text-sm text-gray-300 mb-2">
+            ナビゲーション中心
+          </p>
           <ul className="text-xs space-y-1 text-gray-400">
             <li>• 静的なランディングページ</li>
             <li>• 各機能への入り口</li>
